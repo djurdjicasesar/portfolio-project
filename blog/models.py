@@ -1,9 +1,11 @@
 from django.db import models
+from django.utils import timezone
+from django.urls import reverse
 
 # Create your models here.
 class Blog(models.Model):
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
@@ -12,3 +14,6 @@ class Blog(models.Model):
 
     def pub_date_minutless(self):
         return self.pub_date.strftime('%e %b %Y')
+
+    def get_absolute_url(self):
+        return reverse('blog-detail', kwargs={'pk': self.pk})

@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages 
-from django.contrib.auth.decorators import user_passes_test
 from .forms import UserRegisterForm
 
 def register(request):
@@ -15,9 +14,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-@user_passes_test(lambda u: u.is_superuser)
-def profile(request):
-    return render(request, 'users/profile.html')
+
 
 
  
