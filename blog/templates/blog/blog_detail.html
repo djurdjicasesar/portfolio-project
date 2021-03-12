@@ -58,7 +58,7 @@
         <p class="blog-post-meta">{{ object.pub_date_minutless }}</p>
         <img class="img-fluid" src="{{ blog.image.url }}" />
         <br><br>
-        <p>{{ object.body }}</p>
+        <p>{{ object.body | safe }}</p>
         <hr>
         {% if user.is_superuser %}
         <a class="btn btn-dark" href="{% url 'blog-update' blog.id %}" role="button">Edit</a>

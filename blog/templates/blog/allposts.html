@@ -56,7 +56,7 @@
         <p class="blog-post-meta">{{ blog.pub_date_minutless }}</p>
         <img class="img-fluid" src="{{ blog.image.url }}" />
         <br><br>
-        <p>{{ blog.body }}</p>
+        <p>{{ blog.body | safe }}</p>
         <hr>
       </article>
       {% endfor %}
