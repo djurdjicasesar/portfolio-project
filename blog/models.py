@@ -1,13 +1,13 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
-from ckeditor.fields import RichTextField
+from tinymce.models import HTMLField
 
 # Create your models here.
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     pub_date = models.DateTimeField(default=timezone.now)
-    body = RichTextField(blank=True, null=True)
+    body = HTMLField(blank=True, null=True)
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):
